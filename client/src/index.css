@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body{
+  color: #F3F4F5;
+  height: 100%;
+  background-image: url('../assets/vecteezy_cream-white-badminton-shuttlecock-and-racket-with-neon-light_6614432_925-scaled.jpg');
+  background-color: #cccccc;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
