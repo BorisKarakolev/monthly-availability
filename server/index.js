@@ -1,9 +1,9 @@
 const express = require("express");
 const app = express();
-require('dotenv').config()
+require("dotenv").config({ path: "./.env" });
 
-const urlFree = process.env.URL_FREE_SLOTS
-const urlBooked = process.env.URL_BOOKED_SLOTS
+const urlFree = process.env.URL_FREE_SLOTS;
+const urlBooked = process.env.URL_BOOKED_SLOTS;
 const port = process.env.PORT
 
 const { getData } = require("./helpers");
