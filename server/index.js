@@ -2,8 +2,7 @@ const express = require("express");
 const app = express();
 require("dotenv").config({ path: "./.env" });
 
-const urlFree = process.env.URL_FREE_SLOTS;
-const urlBooked = process.env.URL_BOOKED_SLOTS;
+const url = process.env.URL
 const port = process.env.PORT
 
 const { getData } = require("./helpers");
@@ -17,7 +16,7 @@ app.use((req, res, next) => {
 });
 
 app.get("/", (req, res) => {
-  getData(urlFree, urlBooked).then((data) => {
+  getData(url).then((data) => {
     try {
       res.status(200).json(data);
     } catch (error) {

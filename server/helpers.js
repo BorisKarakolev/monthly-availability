@@ -1,8 +1,8 @@
 const axios = require("axios");
 
-const getSlots = async (urlFree) => {
+const getSlots = async (url) => {
   try {
-    const slots = await axios.get(urlFree);
+    const slots = await axios.get(`${url}bookinggrid?fromDate=2022-12-01T23%3A00%3A00.000Z&days=30`);
 
     const sortedSlots = slots.data.days.map((day) => {
       day.slotDate = day.slotDate.split("T")[0];
@@ -16,9 +16,9 @@ const getSlots = async (urlFree) => {
   }
 };
 
-const getBookedSlots = async (urlBooked) => {
+const getBookedSlots = async (url) => {
   try {
-    const bookedSlots = await axios.get(urlBooked);
+    const bookedSlots = await axios.get(`${url}resourcebookings?from=2022-12-01T23%3A00%3A00.000Z&days=30`);
 
     const sortedBookedSlots = bookedSlots.data
       .map((slot) => {
@@ -40,9 +40,9 @@ const getBookedSlots = async (urlBooked) => {
   }
 };
 
-const getData = async (urlFree, urlBooked) => {
-  const sortedSlots = await getSlots(urlFree);
-  const sortedBookedSlots = await getBookedSlots(urlBooked);
+const getData = async (url) => {
+  const sortedSlots = await getSlots(url);
+  const sortedBookedSlots = await getBookedSlots(url);
   try {
     sortedSlots.forEach((slot) => {
       sortedBookedSlots.forEach((bookedSlot) => {
