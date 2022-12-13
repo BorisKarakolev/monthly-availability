@@ -1,13 +1,12 @@
 const express = require("express");
 const app = express();
+require('dotenv').config()
+
+const urlFree = process.env.URL_FREE_SLOTS
+const urlBooked = process.env.URL_BOOKED_SLOTS
+const port = process.env.PORT
 
 const { getData } = require("./helpers");
-
-const port = 4200;
-const urlFree =
-  "https://bookingportal.com/api/offerings/b80304e1-e178-4272-b7c6-af4a009599eb/bookinggrid?fromDate=2022-12-01T23%3A00%3A00.000Z&days=30";
-const urlBooked =
-  "https://bookingportal.com/api/offerings/b80304e1-e178-4272-b7c6-af4a009599eb/resourcebookings?from=2022-12-01T23%3A00%3A00.000Z&days=30";
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
