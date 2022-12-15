@@ -12,14 +12,14 @@ const Slots = ({ slots }) => {
 
   return (
     <div
-      className="w-full h-full flex items-center justify-center p-10"
+      className="w-full h-full flex items-center justify-center p-10 mt-10"
       id="modal"
       onClick={() => handleClose()}
     >
       <div
         onClick={(e) => e.stopPropagation()}
         id="modal"
-        className="grid grid-flow-row grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3"
+        className="grid grid-flow-row grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3"
       >
         {slots?.map((slot, i) => (
           <div

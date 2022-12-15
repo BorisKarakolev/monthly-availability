@@ -1,13 +1,13 @@
 const axios = require("axios");
 
-const getDate = (date) => {
+const converDate = (date) => {
   date = new Date(date);
   return `${date.getFullYear().toString()}-${date.getMonth().toString()}-${date
     .getDate()
     .toString()}`;
 };
 
-const getTime = (time) => {
+const convertTime = (time) => {
   time = new Date(time);
   return `${time.getHours().toString()}:${time.getMinutes().toString()}${time
     .getSeconds()
@@ -21,7 +21,7 @@ const getSlots = async (url) => {
     );
 
     const sortedSlots = slots.data.days.map((day) => {
-      day.slotDate = getDate(day.slotDate);
+      day.slotDate = converDate(day.slotDate);
       day["slotPools"] = slots.data.slotPools[0].slots.map((slot) => {
         return {
           from: `${parseInt(slot.from)}:00`,
@@ -46,12 +46,12 @@ const getBookedSlots = async (url) => {
 
     const sortedBookedSlots = bookedSlots.data.map((slot) => {
       slot.startTs = {
-        date: getDate(slot.startTs),
-        time: getTime(slot.startTs),
+        date: converDate(slot.startTs),
+        time: convertTime(slot.startTs),
       };
       slot.endTs = {
-        date: getDate(slot.endTs),
-        time: getTime(slot.endTs),
+        date: converDate(slot.endTs),
+        time: convertTime(slot.endTs),
       };
       return slot;
     });
