@@ -7,20 +7,26 @@ const Slots = ({ slots }) => {
   const [clickedSlot, setClickedSlot] = useState(null);
 
   const today = new Date().getDate();
-  const handleModal = () => setOpen(!open);
+  const handleClose = () => setOpen(false);
+  const handleOpen = () => setOpen(!open);
 
   return (
     <div
-      onClick={() => handleModal()}
       className="w-full h-full flex items-center justify-center p-10"
+      id="modal"
+      onClick={() => handleClose()}
     >
-      <div className="grid grid-flow-row grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
+      <div
+        onClick={(e) => e.stopPropagation()}
+        id="modal"
+        className="grid grid-flow-row grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3"
+      >
         {slots?.map((slot, i) => (
           <div
             key={i}
             onClick={() => {
               setClickedSlot(slot);
-              handleModal();
+              handleOpen();
             }}
             className="bg-wannasport-1 h-28 w-52 rounded-xl flex flex-col space-y-3 text-center hover:opacity-90 cursor-pointer p-3 transition-all ease-in-out duration-150"
           >
@@ -33,7 +39,7 @@ const Slots = ({ slots }) => {
           </div>
         ))}
       </div>
-      <Modal open={open} handleClose={handleModal} clickedSlot={clickedSlot} />
+      <Modal open={open} handleClose={handleClose} clickedSlot={clickedSlot} />
     </div>
   );
 };
