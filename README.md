@@ -70,11 +70,11 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 
 # Getting Started with Server side
 
-Once downloaded, open the terminal in the client directory, and continue with:
+Once downloaded, open the terminal in the server directory, and continue with:
 
 ## Available Scripts
 
-In the client directory, you can run:
+In the server directory, you can run:
 
 ### `npm install`
 
